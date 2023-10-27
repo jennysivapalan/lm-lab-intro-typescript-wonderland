@@ -1,6 +1,6 @@
 import { askQuestion, clear, print } from "../ui/console";
-import { parseMealInput } from "../ui/parse_input";
-import { MEALS } from "./chapter_7.types";
+import { parseEggInput, parseMealInput } from "../ui/parse_input";
+import { MEALS, EGGS, EggsType, MealType } from "./chapter_7.types";
 
 export function timeForBreakfast(): void {
   clear(true);
@@ -21,5 +21,19 @@ function chooseMeal(input: string) {
     print(
       `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure`
     );
+  } else {
+    createBreakfast(meal);
   }
+}
+
+function createBreakfast(meal: MealType) {
+  print("I am going to randomly choose an egg option for you!");
+
+  EGGS.forEach((e, i) => print(`   ${i} - ${e}`));
+  print("🍳🍳🍳🍳🍳");
+
+  const randomIndex = Math.floor(Math.random() * (EGGS.length + 1));
+  randomIndex === EGGS.length
+    ? print(`Sorry no eggs for you but you will get ${meal}`)
+    : print(`Great you'll get ${meal} and ${EGGS[randomIndex]} eggs 🍳!`);
 }
