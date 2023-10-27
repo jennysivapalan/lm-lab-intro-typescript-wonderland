@@ -1,5 +1,5 @@
 import { Hole, HOLES } from "../chapter_1/chapter_1.types";
-import { MealType, MEALS, EGGS, EggsType } from "../chapter_7/chapter_7.types";
+import { MealType, MEALS } from "../chapter_7/chapter_7.types";
 
 // 💡 This `parseHoleInput` function exists to keep user input (which can be anything)
 //    away from our logic, which we want to keep clean using our nice neat types like `Hole`

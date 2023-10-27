@@ -1,6 +1,6 @@
 import { askQuestion, clear, print } from "../ui/console";
-import { parseEggInput, parseMealInput } from "../ui/parse_input";
-import { MEALS, EGGS, EggsType, MealType } from "./chapter_7.types";
+import { parseMealInput } from "../ui/parse_input";
+import { MEALS, EGGS, MealType } from "./chapter_7.types";
 
 export function timeForBreakfast(): void {
   clear(true);
