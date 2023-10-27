@@ -16,7 +16,12 @@ export function meetTheQueen(): void {
 
   let guilty: boolean = false;
 
-  let witnesses: Witness[] = getWitnesses();
+  let witnesses: Witness[] = getWitnesses([
+    "The Mad Hatter",
+    "The March Hare",
+    "The Cheshire Cat",
+    "The White Rabbit",
+  ]);
 
   if (!witnesses || witnesses.length === 0) {
     print(`No witnesses have come forward to defend you.`);
@@ -43,24 +48,8 @@ export function meetTheQueen(): void {
   }
 }
 
-// 👉 FIXME ❌ - this function needs writing to meet the above criteria
-function getWitnesses(): Array<Witness> {
-  return [
-    {
-      name: "The Mad Hatter",
-      giveEvidence: () => "Not Guilty",
-    },
-    {
-      name: "The March Hare",
-      giveEvidence: () => "Not Guilty",
-    },
-    {
-      name: "The Cheshire Cat",
-      giveEvidence: () => "Not Guilty",
-    },
-    {
-      name: "The White Rabbit",
-      giveEvidence: () => "Not Guilty",
-    },
-  ];
+function getWitnesses(witnessNames: string[]): Array<Witness> {
+  return witnessNames.map((witnessName) => {
+    return { name: witnessName, giveEvidence: () => "Not Guilty" };
+  });
 }
