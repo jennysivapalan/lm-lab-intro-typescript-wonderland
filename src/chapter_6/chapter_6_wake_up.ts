@@ -1,5 +1,6 @@
 import { endAdventure, haveAdventures } from "../..";
 import { askQuestion, clear, print } from "../ui/console";
+import { timeForBreakfast } from "../chapter_7/chapter_7_breakfast";
 
 // ⚠️ This is a very unusual type setup. It's not a great idea in the real world
 // to nest so many properties with the exact same name.
@@ -36,7 +37,10 @@ export function wakeUp(): void {
       "✅ CONGRATULATIONS! You successfully made it through Wonderland! 🥳"
     );
 
-    return askQuestion("Press ENTER to re-enter Wonderland! ", haveAdventures);
+    return askQuestion(
+      "Shall we get up and have breakfast? Write Yes for breakfast. ",
+      wantBreaksfast
+    );
   } else {
     print("You are unable to wake up! 😱");
     return endAdventure();
@@ -53,4 +57,13 @@ function tryToWakeUp(): WakeUp {
       },
     },
   };
+}
+
+function wantBreaksfast(name: string): void {
+  name === "Yes"
+    ? askQuestion("Great! Press ENTER to get some breakfast!", timeForBreakfast)
+    : askQuestion(
+        "No breakfast? Okay, press ENTER to re-enter Wonderland! ",
+        haveAdventures
+      );
 }
