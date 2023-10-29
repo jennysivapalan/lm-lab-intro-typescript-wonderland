@@ -38,7 +38,7 @@ export function wakeUp(): void {
     );
 
     return askQuestion(
-      "Shall we get up and have breakfast? Write Yes for breakfast. ",
+      "Shall we get up and have breakfast? Type B for breakfast. ",
       wantBreaksfast
     );
   } else {
@@ -60,7 +60,7 @@ function tryToWakeUp(): WakeUp {
 }
 
 function wantBreaksfast(name: string): void {
-  name === "Yes"
+  name === "B" || name === "b"
     ? askQuestion("Great! Press ENTER to get some breakfast!", timeForBreakfast)
     : askQuestion(
         "No breakfast? Okay, press ENTER to re-enter Wonderland! ",
