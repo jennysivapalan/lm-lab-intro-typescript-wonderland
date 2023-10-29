@@ -12,47 +12,28 @@ import {
 //           a Hole    👈 if the input is valid
 //			 undefined 👈 if the input is invalid
 export function parseHoleInput(input: string): Hole | undefined {
-  //  It might seem like we know this is a number,
-  //  but of course the user can enter any nonsense to the prompt!
-  const chosenHole = parseInt(input);
-
-  // now we verify it's valid
-  if (isNaN(chosenHole)) {
-    return undefined;
-  }
-
-  if (chosenHole < 0 || chosenHole > HOLES.length - 1) {
-    return undefined;
-  }
-
-  // we know the input is valid so we can return a Hole
-  return HOLES[chosenHole];
+  const chosenHole = parseInput(input, HOLES);
+  return chosenHole ? HOLES[chosenHole] : undefined;
 }
 
 export function parseMealInput(input: string): MealType | undefined {
-  const chosenMeal = parseInt(input);
-
-  if (isNaN(chosenMeal)) {
-    return undefined;
-  }
-
-  if (chosenMeal < 0 || chosenMeal > MEALS.length - 1) {
-    return undefined;
-  }
-
-  return MEALS[chosenMeal];
+  const chosenMeal = parseInput(input, MEALS);
+  return chosenMeal ? MEALS[chosenMeal] : undefined;
 }
 
 export function parseDrinkInput(input: string): DrinkType | undefined {
-  const chosenDrink = parseInt(input);
+  const chosenDrink = parseInput(input, DRINKS);
+  return chosenDrink ? DRINKS[chosenDrink] : undefined;
+}
 
-  if (isNaN(chosenDrink)) {
+function parseInput(input: string, options: string[]) {
+  const chosenOption = parseInt(input);
+  if (isNaN(chosenOption)) {
     return undefined;
   }
 
-  if (chosenDrink < 0 || chosenDrink > DRINKS.length - 1) {
+  if (chosenOption < 0 || chosenOption > options.length - 1) {
     return undefined;
   }
-
-  return DRINKS[chosenDrink];
+  return chosenOption;
 }

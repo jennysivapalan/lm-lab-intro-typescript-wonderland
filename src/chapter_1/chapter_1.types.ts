@@ -1,10 +1,4 @@
-export const HOLES = [
-  "Badger",
-  "Fox",
-  "Swiss Cheese",
-  "Donut",
-  "Rabbit",
-] as const;
+export const HOLES = ["Badger", "Fox", "Swiss Cheese", "Donut", "Rabbit"];
 
 // ⚠️ It can be very useful to make a custom type based on the contents of an array
 
