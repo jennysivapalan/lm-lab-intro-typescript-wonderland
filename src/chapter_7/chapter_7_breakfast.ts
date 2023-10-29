@@ -1,6 +1,6 @@
 import { askQuestion, clear, print } from "../ui/console";
-import { parseMealInput } from "../ui/parse_input";
-import { MEALS, EGGS, MealType, Breakfast } from "./chapter_7.types";
+import { parseMealInput, parseDrinkInput } from "../ui/parse_input";
+import { MEALS, EGGS, MealType, Breakfast, DRINKS } from "./chapter_7.types";
 
 export function timeForBreakfast(): void {
   clear(true);
@@ -22,9 +22,16 @@ function chooseMeal(input: string) {
       `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure`
     );
   } else {
-    const breakfast = new Breakfast();
-    breakfast.meal = meal;
-    createBreakfast(breakfast);
+    if (meal === "I'll pass on a meal") {
+      print("No meal for you?! I thought you were hungry?");
+      DRINKS.forEach((d, i) => print(`   ${i} - ${d}`));
+
+      askQuestion("How about a drink instead?", chooseDrink);
+    } else {
+      const breakfast = new Breakfast();
+      breakfast.meal = meal;
+      createBreakfast(breakfast);
+    }
   }
 }
 
@@ -40,4 +47,17 @@ function createBreakfast(breakfast: Breakfast) {
     : print(
         `Great you'll get ${breakfast.meal} and ${EGGS[randomIndex]} eggs 🍳!`
       );
+}
+
+function chooseDrink(input: string) {
+  const drink = parseDrinkInput(input);
+
+  if (drink === undefined) {
+    print(`😮`);
+    print(
+      `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure`
+    );
+  } else {
+    print(`Great you'll get ${drink}!`);
+  }
 }
