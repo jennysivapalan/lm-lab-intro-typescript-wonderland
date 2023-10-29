@@ -12,18 +12,15 @@ import {
 //           a Hole    👈 if the input is valid
 //			 undefined 👈 if the input is invalid
 export function parseHoleInput(input: string): Hole | undefined {
-  const chosenHole = parseInput(input, HOLES);
-  return chosenHole ? HOLES[chosenHole] : undefined;
+  return parseInput(input, HOLES);
 }
 
 export function parseMealInput(input: string): MealType | undefined {
-  const chosenMeal = parseInput(input, MEALS);
-  return chosenMeal ? MEALS[chosenMeal] : undefined;
+  return parseInput(input, MEALS);
 }
 
 export function parseDrinkInput(input: string): DrinkType | undefined {
-  const chosenDrink = parseInput(input, DRINKS);
-  return chosenDrink ? DRINKS[chosenDrink] : undefined;
+  return parseInput(input, DRINKS);
 }
 
 function parseInput(input: string, options: string[]) {
@@ -35,5 +32,5 @@ function parseInput(input: string, options: string[]) {
   if (chosenOption < 0 || chosenOption > options.length - 1) {
     return undefined;
   }
-  return chosenOption;
+  return options[chosenOption];
 }
