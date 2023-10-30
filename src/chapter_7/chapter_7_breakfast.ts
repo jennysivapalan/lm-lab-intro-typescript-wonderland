@@ -1,6 +1,7 @@
 import { askQuestion, clear, print } from "../ui/console";
 import { parseMealInput, parseDrinkInput } from "../ui/parse_input";
 import { MEALS, EGGS, MealType, Breakfast, DRINKS } from "./chapter_7.types";
+import { haveAdventures } from "../..";
 
 export function timeForBreakfast(): void {
   clear(true);
@@ -17,10 +18,7 @@ function chooseMeal(input: string) {
   const meal = parseMealInput(input);
 
   if (meal === undefined) {
-    print(`😮`);
-    print(
-      `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure`
-    );
+    printError(input);
   } else {
     if (meal === "I'll pass on a meal") {
       print("No meal for you?! I thought you were hungry?");
@@ -53,11 +51,16 @@ function chooseDrink(input: string) {
   const drink = parseDrinkInput(input);
 
   if (drink === undefined) {
-    print(`😮`);
-    print(
-      `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure`
-    );
+    printError(input);
   } else {
     print(`Great you'll get ${drink}!`);
   }
+}
+
+function printError(input: string) {
+  print(`😮`);
+  print(
+    `${input} is an invalid input 😭. You must still be tired, it's probably best to go back to bed and have an adventure.`
+  );
+  return askQuestion("Press ENTER to re-enter Wonderland! ", haveAdventures);
 }
