@@ -24,29 +24,28 @@ function chooseMeal(input: string) {
       print("No meal for you?! I thought you were hungry?");
       DRINKS.forEach((d, i) => print(`   ${i} - ${d}`));
 
-      askQuestion("How about a drink instead?", chooseDrink);
+      askQuestion("How about a drink instead? ", chooseDrink);
     } else {
       const breakfast = new Breakfast();
       breakfast.meal = meal;
       createBreakfast(breakfast);
+      askQuestion("Would you like a drink with that? ", chooseDrink);
+      DRINKS.forEach((d, i) => print(`   ${i} - ${d}`));
     }
   }
 }
 
 function createBreakfast(breakfast: Breakfast) {
-  print("I am going to randomly choose an egg option for you!");
+  print("I am going to randomly choose an egg option for you! ");
 
   EGGS.forEach((e, i) => print(`   ${i} - ${e}`));
   print("🍳🍳🍳🍳🍳");
 
   const randomIndex = Math.floor(Math.random() * (EGGS.length + 1));
-
   randomIndex === EGGS.length ? null : (breakfast.eggs = EGGS[randomIndex]);
 
   breakfast.eggs
-    ? print(
-        `Great you'll get ${breakfast.meal} and ${breakfast.eggs}} eggs 🍳!`
-      )
+    ? print(`Great you'll get ${breakfast.meal} and ${breakfast.eggs} eggs 🍳!`)
     : print(`Sorry no eggs for you but you will get ${breakfast.meal}`);
 }
 
@@ -57,6 +56,10 @@ function chooseDrink(input: string) {
     printError(input);
   } else {
     print(`Great you'll get ${drink}!`);
+    askQuestion(
+      "While we make that up press ENTER to re-enter Wonderland! ",
+      haveAdventures
+    );
   }
 }
 
