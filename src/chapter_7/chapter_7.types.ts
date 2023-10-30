@@ -19,6 +19,6 @@ export const DRINKS = ["Tea", "Coffee", "Orange Juice", "Water"];
 export type DrinkType = (typeof DRINKS)[number];
 
 export class Breakfast {
-  meal: MealType = "I'll pass on a meal";
-  eggs?: EggsType = "No eggs";
+  meal?: MealType;
+  eggs?: EggsType;
 }
