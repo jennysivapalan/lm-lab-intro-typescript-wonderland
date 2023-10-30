@@ -6,13 +6,7 @@ export const MEALS = [
 ];
 export type MealType = (typeof MEALS)[number];
 
-export const EGGS = [
-  "Poached",
-  "Scrambled",
-  "Fried",
-  "Hard Boiled",
-  "No eggs",
-] as const;
+export const EGGS = ["Poached", "Scrambled", "Fried", "Hard Boiled"] as const;
 export type EggsType = (typeof EGGS)[number];
 
 export const DRINKS = ["Tea", "Coffee", "Orange Juice", "Water"];

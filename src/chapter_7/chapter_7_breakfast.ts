@@ -40,11 +40,14 @@ function createBreakfast(breakfast: Breakfast) {
   print("🍳🍳🍳🍳🍳");
 
   const randomIndex = Math.floor(Math.random() * (EGGS.length + 1));
-  randomIndex === EGGS.length
-    ? print(`Sorry no eggs for you but you will get ${breakfast.meal}`)
-    : print(
-        `Great you'll get ${breakfast.meal} and ${EGGS[randomIndex]} eggs 🍳!`
-      );
+
+  randomIndex === EGGS.length ? null : (breakfast.eggs = EGGS[randomIndex]);
+
+  breakfast.eggs
+    ? print(
+        `Great you'll get ${breakfast.meal} and ${breakfast.eggs}} eggs 🍳!`
+      )
+    : print(`Sorry no eggs for you but you will get ${breakfast.meal}`);
 }
 
 function chooseDrink(input: string) {
