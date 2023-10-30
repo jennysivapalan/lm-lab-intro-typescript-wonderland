@@ -20,7 +20,7 @@ function chooseMeal(input: string) {
   if (meal === undefined) {
     printError(input);
   } else {
-    if (meal === "I'll pass on a meal") {
+    if (meal === "🚫 I'll pass on a meal") {
       print("No meal for you?! I thought you were hungry?");
       DRINKS.forEach((d, i) => print(`   ${i} - ${d}`));
 
